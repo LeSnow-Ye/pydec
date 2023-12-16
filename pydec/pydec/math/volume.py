@@ -1,8 +1,8 @@
-__all__ = ['unsigned_volume','signed_volume']
+__all__ = ['unsigned_volume', 'signed_volume']
 
-from scipy import sqrt,inner,shape,asarray
-from scipy.special import factorial
+from scipy import sqrt, inner, asarray
 from scipy.linalg import det
+from scipy.special import factorial
 
 
 def unsigned_volume(pts):
@@ -44,23 +44,23 @@ def unsigned_volume(pts):
     ----------
     [1] http://www.math.niu.edu/~rusin/known-math/97/volumes.polyh
 
-    """       
-    
+    """
+
     pts = asarray(pts)
-    
-    M,N = pts.shape
+
+    M, N = pts.shape
     M -= 1
 
     if M < 0 or M > N:
         raise ValueError('array has invalid shape')
-    
+
     if M == 0:
-        return 1.0 
-        
+        return 1.0
+
     A = pts[1:] - pts[0]
-    return sqrt(abs(det(inner(A,A))))/factorial(M)
-    
-    
+    return sqrt(abs(det(inner(A, A)))) / factorial(M)
+
+
 def signed_volume(pts):
     """Signed volume of a simplex    
     
@@ -95,15 +95,15 @@ def signed_volume(pts):
     ----------
     [1] http://www.math.niu.edu/~rusin/known-math/97/volumes.polyh
 
-    """       
-    
+    """
+
     pts = asarray(pts)
-    
-    M,N = pts.shape
+
+    M, N = pts.shape
     M -= 1
 
     if M != N:
         raise ValueError('array has invalid shape')
-        
+
     A = pts[1:] - pts[0]
-    return det(A)/factorial(M)
+    return det(A) / factorial(M)

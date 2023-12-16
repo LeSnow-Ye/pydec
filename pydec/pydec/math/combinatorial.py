@@ -38,13 +38,14 @@ def combinations(L, n):
     The elements remain in the same order as in L    
 
     """
-    if n==0 or n > len(L): 
+    if n == 0 or n > len(L):
         yield []
     else:
-        for i in range(len(L)-n+1):
-            for t in combinations(L[i+1:], n-1):
+        for i in range(len(L) - n + 1):
+            for t in combinations(L[i + 1:], n - 1):
                 yield [L[i]] + t
-        
+
+
 def permutations(L):
     """Generate permutations from a sequence of elements.
 
@@ -79,6 +80,5 @@ def permutations(L):
     elif len(L) >= 2:
         (h, t) = (L[0:1], L[1:])
         for p in permutations(t):
-            for i in range(len(p)+1):
+            for i in range(len(p) + 1):
                 yield p[:i] + h + p[i:]
- 

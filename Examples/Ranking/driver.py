@@ -15,22 +15,16 @@ from scipy.sparse.linalg import lsqr
 
 # Load graph and edge values
 data = loadtxt('data.txt').astype(int)
-edges = data[:,:2]
+edges = data[:, :2]
 
 # Create abstract simplicial complex from edges
 asc = abstract_simplicial_complex([edges])
 
-omega = data[:,-1] # pairwise comparisons
-B1 = asc.chain_complex()[1] # boundary matrix
-alpha = lsqr(B1.T, omega)[0] # solve least squares problem
+omega = data[:, -1]  # pairwise comparisons
+B1 = asc.chain_complex()[1]  # boundary matrix
+alpha = lsqr(B1.T, omega)[0]  # solve least squares problem
 
 # Set the minimum to 0
 alpha = alpha - alpha.min()
 
 print(alpha)
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 __all__ = ['regular_cube_mesh']
 
-from numpy import array,asarray,hstack,vstack,arange,zeros,ndim
+from numpy import array, asarray, hstack, vstack, arange, zeros, ndim
 
 
 class regular_cube_mesh:
@@ -24,17 +24,19 @@ class regular_cube_mesh:
        bitmap[5,5,5] = False
        c_mesh = regular_cube_mesh(bitmap)
     """
-    def __init__(self,bitmap):
-        self.bitmap = asarray(bitmap,dtype='bool')
+
+    def __init__(self, bitmap):
+        self.bitmap = asarray(bitmap, dtype='bool')
 
     def cube_array(self):
         """
         Return a cube array that represents this mesh's bitmap
         """
         cubes = vstack(self.bitmap.nonzero()).transpose().astype('int32')
-        cubes = hstack((cubes,zeros((cubes.shape[0],ndim(self.bitmap)),dtype=cubes.dtype) + arange(ndim(self.bitmap),dtype=cubes.dtype)))
+        cubes = hstack((cubes, zeros((cubes.shape[0], ndim(self.bitmap)), dtype=cubes.dtype) + arange(ndim(self.bitmap),
+                                                                                                      dtype=cubes.dtype)))
 
         return cubes
-    
+
     def dimension(self):
         return ndim(self.bitmap)

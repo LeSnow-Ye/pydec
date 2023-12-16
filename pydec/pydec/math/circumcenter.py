@@ -1,14 +1,16 @@
 __all__ = ['is_wellcentered', 'circumcenter', 'circumcenter_barycentric']
 
-from numpy import bmat, hstack, vstack, dot, sqrt, ones, zeros, sum, \
-        asarray
-from numpy.linalg import solve,norm
+from numpy import bmat, hstack, dot, ones, zeros, sum, \
+    asarray
+from numpy.linalg import solve, norm
+
 
 def is_wellcentered(pts, tol=1e-8):
     """Determines whether a set of points defines a well-centered simplex.
     """
-    barycentric_coordinates = circumcenter_barycentric(pts)    
+    barycentric_coordinates = circumcenter_barycentric(pts)
     return min(barycentric_coordinates) > tol
+
 
 def circumcenter_barycentric(pts):
     """Barycentric coordinates of the circumcenter of a set of points.
@@ -44,23 +46,24 @@ def circumcenter_barycentric(pts):
     Uses an extension of the method described here:
     http://www.ics.uci.edu/~eppstein/junkyard/circumcenter.html
 
-    """    
+    """
 
     pts = asarray(pts)
 
-    rows,cols = pts.shape
+    rows, cols = pts.shape
 
-    assert(rows <= cols + 1)    
+    assert (rows <= cols + 1)
 
-    A = bmat( [[ 2*dot(pts,pts.T), ones((rows,1)) ],
-               [  ones((1,rows)) ,  zeros((1,1))  ]] )
+    A = bmat([[2 * dot(pts, pts.T), ones((rows, 1))],
+              [ones((1, rows)), zeros((1, 1))]])
 
-    b = hstack((sum(pts * pts, axis=1),ones((1))))
-    x = solve(A,b)
-    bary_coords = x[:-1]  
+    b = hstack((sum(pts * pts, axis=1), ones((1))))
+    x = solve(A, b)
+    bary_coords = x[:-1]
 
     return bary_coords
-    
+
+
 def circumcenter(pts):
     """Circumcenter and circumradius of a set of points.
     
@@ -96,11 +99,8 @@ def circumcenter(pts):
     http://www.ics.uci.edu/~eppstein/junkyard/circumcenter.html
 
     """
-    pts = asarray(pts)      
+    pts = asarray(pts)
     bary_coords = circumcenter_barycentric(pts)
-    center = dot(bary_coords,pts)
-    radius = norm(pts[0,:] - center)
-    return (center,radius)
-    
-    
-    
+    center = dot(bary_coords, pts)
+    radius = norm(pts[0, :] - center)
+    return (center, radius)

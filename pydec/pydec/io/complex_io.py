@@ -1,14 +1,14 @@
-#__all__ = ['matlab_to_complex','complex_to_matlab','sparse_to_ijv']
+# __all__ = ['matlab_to_complex','complex_to_matlab','sparse_to_ijv']
 #
-#from pydec.dec import SimplicialComplex,d,star,delta
-#from pydec.dec.cochain import Cochain
+# from pydec.dec import SimplicialComplex,d,star,delta
+# from pydec.dec.cochain import Cochain
 #
 ##from scipy import concatenate,random,rand,sparse,zeros,shape,Int,array,matrix,arange,ArrayType
-#from scipy import *
-#from scipy.io.mio import loadmat,savemat
+# from scipy import *
+# from scipy.io.mio import loadmat,savemat
 #
 #
-#def matlab_to_complex(filename,vertex_array_name = 'v',simplex_array_name='s'):
+# def matlab_to_complex(filename,vertex_array_name = 'v',simplex_array_name='s'):
 #    """
 #    Load a complex from a MAT file
 #    SciPy only supports MAT v5, so save from Matlab with the -V4 option
@@ -30,7 +30,7 @@
 #        
 #    return SimplicialComplex(v,s)
 #
-#def complex_to_matlab(filename,complex):
+# def complex_to_matlab(filename,complex):
 #    """
 #    Write a complex and all associated operators to a MAT file
 #    """
@@ -78,7 +78,7 @@
 #    savemat(filename,mat_dict)
 #
 #    
-#def sparse_to_ijv(sparse_matrix):
+# def sparse_to_ijv(sparse_matrix):
 #    """
 #    Convert a sparse matrix to a ijv representation.
 #    For a matrix with N non-zeros, a N by 3 matrix will be returned
@@ -110,9 +110,9 @@
 #    
 #    
 #    
-#import unittest
+# import unittest
 #
-#class Test_sparse_to_ijv(unittest.TestCase):
+# class Test_sparse_to_ijv(unittest.TestCase):
 #    def setUp(self):
 #        random.seed(0) #make tests repeatable  
 #        
@@ -136,7 +136,7 @@
 #                self.assertEqual(v,1)
 #                
 #            
-#class TestFile(unittest.TestCase):
+# class TestFile(unittest.TestCase):
 #    def setUp(self):
 #        pass
 #        
@@ -146,5 +146,5 @@
 #        
 #        
 #    
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    unittest.main()

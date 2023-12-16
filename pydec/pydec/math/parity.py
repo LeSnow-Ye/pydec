@@ -1,7 +1,7 @@
-__all__ = ['relative_parity','permutation_parity']
+__all__ = ['relative_parity', 'permutation_parity']
 
 
-def relative_parity(A,B):
+def relative_parity(A, B):
     """Relative parity between two lists
     
     Parameters
@@ -32,22 +32,21 @@ def relative_parity(A,B):
     1
 
     """
-    
+
     if len(A) != len(B): raise ValueError("B is not a permutation of A")
-    
+
     # represent each element in B with its index in A and run permutation_parity()
-    A_indices = dict(zip(A,range(len(A)))) 
-    
+    A_indices = dict(zip(A, range(len(A))))
+
     if len(A_indices) != len(A): raise ValueError("A contains duplicate values")
-    
-    try:   
-        perm   = [A_indices[x] for x in B]
+
+    try:
+        perm = [A_indices[x] for x in B]
     except KeyError:
         raise ValueError("B is not a permutation of A")
-    
+
     return permutation_parity(perm, check_input=False)
-    
-    
+
 
 def permutation_parity(perm, check_input=True):
     """Parity of a permutation of the integers
@@ -108,4 +107,3 @@ def permutation_parity(perm, check_input=True):
                 break
 
     return (n - num_cycles) % 2
-

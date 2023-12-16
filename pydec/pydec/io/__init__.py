@@ -1,9 +1,6 @@
 "PyDEC mesh and array IO"
 
-from .info import __doc__
-
-from .meshio import *
 from .arrayio import *
+from .meshio import *
 
-__all__ = list(filter(lambda s:not s.startswith('_'),dir()))
-
+__all__ = list(filter(lambda s: not s.startswith('_'), dir()))

@@ -1,12 +1,12 @@
-#from pydec.testing import *
+# from pydec.testing import *
 #
-#import numpy
-#from scipy.sparse import coo_matrix, csr_matrix
+# import numpy
+# from scipy.sparse import coo_matrix, csr_matrix
 #
-#from pydec.math.graph import maximal_independent_set
+# from pydec.math.graph import maximal_independent_set
 #
 #
-#class test_maximal_independent_set(TestCase):
+# class test_maximal_independent_set(TestCase):
 #    def is_MIS(self,graph,mis):
 #        mis = set(mis)
 #        unmarked = set(range(graph.shape[0]))

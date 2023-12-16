@@ -1,5 +1,6 @@
 __all__ = ['file_extension']
 
+
 def file_extension(filename):
     """
     Return the extension of a file (if any)
@@ -9,5 +10,3 @@ def file_extension(filename):
         return parts[-1]
     else:
         return ""
-        
-        
